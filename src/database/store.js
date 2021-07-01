@@ -358,7 +358,7 @@ const data = {
       },
       {
         name: "Sajid Hasan",
-        image: "Sajid",
+        image: "sajid",
         rank: "Question Setter, Trainer",
         fbProfile: "https://www.facebook.com/mahmudulhasan.shajid",
         email: "",
