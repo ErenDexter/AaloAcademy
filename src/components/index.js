@@ -6,6 +6,7 @@ import Exam from "./Exam.svelte";
 import Answer from "./Answer.svelte";
 import Leaderboard from "./Leaderboard.svelte";
 import DisabledBtn from "./DisabledBtn.svelte";
+import Footer from "./Footer.svelte";
 
 export {
   Nav,
@@ -16,4 +17,5 @@ export {
   Answer,
   Leaderboard,
   DisabledBtn,
+  Footer,
 };

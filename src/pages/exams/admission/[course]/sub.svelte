@@ -16,7 +16,7 @@ onDestroy(() => {
     unsub();
 })
 
-export let state = 'Exam';
+export let state = 'phx1';
 let newState, newIcon, course;
 course = data.admission[window.location.pathname.split('/')[3]];
 

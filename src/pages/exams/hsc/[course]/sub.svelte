@@ -48,7 +48,7 @@ function returnId(link) {
 
 </script>
 
-<div class="grid lg:grid-cols-3 sm:grid-cols-2 justify-items-center md:mr-14 md:ml-10 xl:ml-0 mt-2 gap-4 h-100 p-4 pr-4 { course[state].length > 0 ? 'overflow-scroll overflow-x-hidden': ''}">
+<div class="grid lg:grid-cols-3 sm:grid-cols-2 justify-items-center md:mr-14 md:ml-10 xl:ml-0 mt-2 gap-4 h-100 p-4 pr-4 { course[state].length > 0 ? 'overflow-y-auto overflow-x-hidden': ''}">
 
     {#if course[state].length > 0}
     {#each course[state] as sub}

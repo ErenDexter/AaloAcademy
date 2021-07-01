@@ -2,8 +2,10 @@
 import {
     onDestroy
 } from "svelte"
-
+import {Footer} from '../components'
 import store from "../database/store"
+
+const divH = window.innerHeight - 135;
 
 let data = {};
 const unsub = store.subscribe(db => {
@@ -16,7 +18,7 @@ onDestroy(() => {
 </script>
 
 <section class="text-gray-600 body-font overflow-hidden">
-    <div class="container lg:px-24 px-5 py-10 lg:py-16 mx-auto overflow-y-auto overflow-x-hidden h-100">
+    <div style="height: {divH}px; width-auto" class="container lg:px-24 px-5 py-10 lg:py-16 mx-auto overflow-y-auto overflow-x-hidden">
         <div class="flex flex-wrap -m-12">
 
             {#each data as post}
@@ -43,6 +45,7 @@ onDestroy(() => {
             {/each}
 
         </div>
+        <div class="mb-5 lg:mb-0"> <Footer /></div>
     </div>
 
 </section>

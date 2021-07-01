@@ -12,6 +12,8 @@ from "./Button.svelte"
 
 export let examId;
 
+const divH = window.innerHeight - 190;
+
 let submitted = false;
 
 window.onbeforeunload = function() {
@@ -89,7 +91,7 @@ onMount(() => {
 
     </div>
     {#if millisec > 0}
-    <div class="text-primary flex justify-center text-base font-semibold -mt-3 mb-2">{extraTime && !submitted ? 'Submit your answers now!' : ''}</div>
+    <div class="text-primary flex justify-center text-base -mt-3 mb-2">{extraTime && !submitted ? 'Submit your answers now!' : ''}</div>
     {/if}
     <div class="flex justify-center">
         {#if showExamDiv}
@@ -98,10 +100,10 @@ onMount(() => {
             type="text/html"
             data={link}
             width="100%"
-            height="550px"
+            height="{divH}px"
             style="overflow: auto"
             />
-            {:else} <div class="mt-20 text-3xl text-primary">Opps... Time's Up!</div>
+            {:else} <div class="mt-20 text-3xl font-light text-primary">Opps... Time's Up!</div>
             {/if}
             </div>
 
