@@ -2,17 +2,17 @@ import { writable } from "svelte/store";
 
 const data = {
   daily: {
-    id: "01",
+    id: "02",
     examId:
-      "hm1_1FAIpQLSc3KlZNHyfBEJcnJkhRwxNdtwOsUBYk-CTxBXz8KPtfE9Ni6Q/viewform",
-    subId: "hm1",
-    subject: "Higher Math 1st Paper",
-    exam: "Paper Final",
+      "phx1_1FAIpQLSfmvL1KtDt_wvjQ3gZscz2HQyjNUFR8yCs8luoAV1Arawqj1g/viewform",
+    subId: "phx1",
+    subject: "Physics 1st Paper",
+    exam: "Daily",
     type: "MCQ",
-    marks: 50,
-    syllabus: "Full Book",
-    time: "30 mins",
-    link: "https://docs.google.com/forms/d/e/1FAIpQLSc3KlZNHyfBEJcnJkhRwxNdtwOsUBYk-CTxBXz8KPtfE9Ni6Q/viewform",
+    marks: 25,
+    syllabus: "Chapter-3",
+    time: "15 mins",
+    link: "https://docs.google.com/forms/d/e/1FAIpQLSfmvL1KtDt_wvjQ3gZscz2HQyjNUFR8yCs8luoAV1Arawqj1g/viewform",
     answerLink: null,
     standings: null,
   },
