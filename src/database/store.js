@@ -154,7 +154,7 @@ const data = {
 
   admission: {
     EngineeringStandard: {
-      course: "Engineering Full Course",
+      course: "Engineering Standard",
       //
       // ENG PHX 1
       //
@@ -241,7 +241,7 @@ const data = {
     //
 
     MedicalStandard: {
-      course: "Medical Crash Revision",
+      course: "Medical Standard",
       //
       // MED PHX 1
       //
