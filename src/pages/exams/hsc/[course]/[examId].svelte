@@ -55,7 +55,7 @@ const examInfo = data.hsc[window.location.pathname.split('/')[3]][examId.split("
 <div>
     {#if page==='index' && examInfo}
     <div class="flex items-center  lg:ml-20 lg:pl-1.5 lg:mt-14 mt-5 px-8">
-        <div class="bg-primary w-2.5 h-2.5 -ml-1 mr-3 mt-1"></div>
+        <div class="bg-primary w-2.5 h-2.5 -ml-1 mr-3"></div>
         <div class="title-font sm:text-xl text-lg font-medium text-gray-900">{data.hsc[window.location.pathname.split('/')[3]].course}</div>
     </div>
 

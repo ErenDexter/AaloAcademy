@@ -14,7 +14,7 @@
 <div class="grid grid-cols-4 justify-items-center xl:visible">
     <div class="mt-14 ml-20">
    <div class="flex items-center">
-     <div class="bg-primary w-2.5 h-2.5 mr-3 mt-1"></div>
+     <div class="bg-primary w-2.5 h-2.5 mr-3"></div>
      <div class="title-font sm:text-xl text-lg font-medium text-gray-900">{courseName}</div>
    </div>
    <div class="pt-4 pl-6">
@@ -59,7 +59,7 @@
 
 <div class="xl:hidden">
     <div class="flex items-center ml-8 mt-2">
-        <div class="bg-primary w-2.5 h-2.5 mr-3 mt-1"></div>
+        <div class="bg-primary w-2.5 h-2.5 mr-3"></div>
         <div class="title-font sm:text-xl text-lg font-medium text-gray-900">{courseName}</div>
     </div>
     <div class="flex flex-row flex-wrap pl-5 pr-0 mt-5 overflow-y-scroll">
