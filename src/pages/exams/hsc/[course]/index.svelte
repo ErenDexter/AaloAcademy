@@ -25,9 +25,11 @@
 
     <div on:click={() => {state='hm2'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "hm2")}} class="md:mt-5 border-r-4 border-white text-lg font-semibold md:pr-20 hover:text-primary cursor-pointer {state ==='hm2' ? ' border-primary text-primary' : ''}">Higher Math 2nd Paper</div>
 
-    <div on:click={() => {state='zoo'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "zoo")}} class="md:mt-5 border-r-4 border-white text-lg font-semibold md:pr-20 hover:text-primary cursor-pointer {state ==='zoo' ? ' border-primary text-primary' : ''}">Zoology</div>
+    <div on:click={() => {state='bot'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "bot")}} class="md:mt-5 border-r-4 border-white text-lg font-semibold md:pr-20 hover:text-primary cursor-pointer {state ==='bot' ? ' border-primary text-primary' : ''}">Biology 1st Paper</div>
 
-    <div on:click={() => {state='bot'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "bot")}} class="md:mt-5 border-r-4 border-white text-lg font-semibold md:pr-20 hover:text-primary cursor-pointer {state ==='bot' ? ' border-primary text-primary' : ''}">Botany</div>
+
+    <div on:click={() => {state='zoo'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "zoo")}} class="md:mt-5 border-r-4 border-white text-lg font-semibold md:pr-20 hover:text-primary cursor-pointer {state ==='zoo' ? ' border-primary text-primary' : ''}">Biology 2nd Paper</div>
+
 
     <div on:click={() => {state='chem1'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "chem1")}} class="md:mt-5 border-r-4 border-white text-lg font-semibold md:pr-20 hover:text-primary cursor-pointer {state ==='chem1' ? ' border-primary text-primary' : ''}">Chemistry 1st Paper</div>
 
@@ -77,18 +79,19 @@
         <div on:click={() => {state='hm2'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "hm2")}} class="text-primary mr-2 mb-2 px-3 py-1 border-2 border-primary rounded-full text-base font-semibold  cursor-pointer ">H. Math 2</div> 
         {/if}
 
+        {#if state==='bot'}
+        <div on:click={() => {state='bot'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "bot")}} class="text-white bg-primary mb-2 mr-2 px-3 py-1 border-2 border-primary rounded-full text-base font-semibold  cursor-pointer ">Biology 1</div> 
+        {:else}
+        <div on:click={() => {state='bot'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "bot")}} class="text-primary mr-2 mb-2 px-3 py-1 border-2 border-primary rounded-full text-base font-semibold  cursor-pointer ">Biology 1</div> 
+        {/if}
 
         {#if state==='zoo'}
-        <div on:click={() => {state='zoo'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "zoo")}} class="text-white bg-primary mb-2 mr-2 px-3 py-1 border-2 border-primary rounded-full text-base font-semibold  cursor-pointer ">Zoology</div> 
+        <div on:click={() => {state='zoo'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "zoo")}} class="text-white bg-primary mb-2 mr-2 px-3 py-1 border-2 border-primary rounded-full text-base font-semibold  cursor-pointer ">Biology 2</div> 
         {:else}
-        <div on:click={() => {state='zoo'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "zoo")}} class="text-primary mr-2 mb-2 px-3 py-1 border-2 border-primary rounded-full text-base font-semibold  cursor-pointer ">Zoology</div> 
+        <div on:click={() => {state='zoo'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "zoo")}} class="text-primary mr-2 mb-2 px-3 py-1 border-2 border-primary rounded-full text-base font-semibold  cursor-pointer ">Biology 2</div> 
         {/if}
 
-        {#if state==='bot'}
-        <div on:click={() => {state='bot'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "bot")}} class="text-white bg-primary mb-2 mr-2 px-3 py-1 border-2 border-primary rounded-full text-base font-semibold  cursor-pointer ">Botany</div> 
-        {:else}
-        <div on:click={() => {state='bot'; localStorage.setItem(`lastChosenAdmission${course}Sub`, "bot")}} class="text-primary mr-2 mb-2 px-3 py-1 border-2 border-primary rounded-full text-base font-semibold  cursor-pointer ">Botany</div> 
-        {/if}
+    
             
 
         {#if state==='chem1'}

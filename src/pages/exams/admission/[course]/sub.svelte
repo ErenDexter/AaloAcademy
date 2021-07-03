@@ -16,6 +16,10 @@ onDestroy(() => {
     unsub();
 })
 
+let divH;
+
+divH = window.innerHeight - 160;
+
 export let state = 'phx1';
 let newState, newIcon, course;
 course = data.admission[window.location.pathname.split('/')[3]];
@@ -36,7 +40,7 @@ let icon = ["M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 
 
 $: newIcon = state === "phx1" ? icon[0] : (state === "phx2" ? icon[1] : (state === 'hm1' ? icon[2] : (state === 'hm2' ? icon[3] : (state === "chem1" ? icon[4] : icon[5]))));
 
-$: newState = state === "phx1" ? "Physics 1st Paper" : (state === "phx2" ? 'Physics 2nd Paper' : (state === 'hm1' ? 'Higher Math 1st Paper' : (state === 'hm2' ? 'Higher Math 2nd' : (state === "chem1" ? 'Chemistry 1st paper' : (state === 'chem2' ? 'Chemistry 2nd Paper' : (state === 'zoo' ? 'Zoology' : 'Botany'))))));
+$: newState = state === "phx1" ? "Physics 1st Paper" : (state === "phx2" ? 'Physics 2nd Paper' : (state === 'hm1' ? 'Higher Math 1st Paper' : (state === 'hm2' ? 'Higher Math 2nd' : (state === "chem1" ? 'Chemistry 1st paper' : (state === 'chem2' ? 'Chemistry 2nd Paper' : (state === 'zoo' ? 'Biology 2nd Paper' : 'Biology 1st Paper'))))));
 
 function returnId(link) {
     var linkArr = link.split("/");
@@ -47,12 +51,12 @@ function returnId(link) {
 }
 </script>
 
-<div class="grid lg:grid-cols-3 sm:grid-cols-2 justify-items-center md:mr-14 md:ml-10 xl:ml-0 mt-2 gap-4 h-100 p-4 pr-4 { course[state].length > 0 ? 'overflow-y-auto overflow-x-hidden': ''}">
+<div style="height: {divH}px;" class="grid lg:grid-cols-3 sm:grid-cols-2 justify-items-strech md:mr-14 md:ml-10 xl:ml-0 mt-2 gap-4 p-4 pr-4 overflow-y-auto">
 
     {#if course[state].length > 0}
     {#each course[state] as sub}
     <section class="text-gray-600 body-font">
-        <div on:click={$goto(`${window.location.pathname}/${state}_${returnId(sub.link)}`)} class="border relative border-gray-200 pl-6 pt-6 pb-6 pr-20 rounded-lg transition duration-300 transform hover:scale-105 ease-in-out cursor-pointer shadow-md">
+        <div on:click={$goto(`${window.location.pathname}/${state}_${returnId(sub.link)}`)} class=" w-full border relative border-gray-200 pl-6 pt-6 pb-6 pr-14 rounded-lg transition duration-300 transform hover:scale-105 ease-in-out cursor-pointer shadow-md">
             <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 text-primary mb-4">
                 {#if state === 'phx1' || state === 'phx2' || state === 'chem1' || state === 'chem2' || state === 'hm1' || state === 'hm2'}
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
@@ -76,4 +80,5 @@ function returnId(link) {
                         {:else}
                         <center class="text-2xl">Coming Soon...</center>
                         {/if}
+                        <br>
                         </div>

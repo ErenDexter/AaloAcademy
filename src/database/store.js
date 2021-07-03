@@ -1,29 +1,102 @@
 import { writable } from "svelte/store";
 
 const data = {
-  daily: {
-    id: "02",
-    examId:
-      "phx1_1FAIpQLSfmvL1KtDt_wvjQ3gZscz2HQyjNUFR8yCs8luoAV1Arawqj1g/viewform",
-    subId: "phx1",
-    subject: "Physics 1st Paper",
-    exam: "Daily",
-    type: "MCQ",
-    marks: 25,
-    syllabus: "Chapter 4",
-    time: "15 mins",
-    link: "https://docs.google.com/forms/d/e/1FAIpQLSfmvL1KtDt_wvjQ3gZscz2HQyjNUFR8yCs8luoAV1Arawqj1g/viewform",
-    answerLink: null,
-    standings: null,
-  },
+  //
+  //
+  //
+  //
+  //
+  // // // // // // // // // //......................  DAILY  .................// // // // // // // // //
+  //
+  //
+  //
+  //
+  //
+
+  daily: [
+    {
+      id: "02",
+      examId: "phx1_1FAIpQLSfmvL1KtDtwvjQ3gZscz2HQyjNUFR8yCs8luoAV1Arawqj1g",
+      subId: "phx1",
+      courseName: "DU A Special",
+      subject: "Physics 1st Paper",
+      exam: "Daily",
+      type: "MCQ",
+      marks: 25,
+      syllabus: "Chapter 4",
+      time: "15 mins",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSfmvL1KtDt_wvjQ3gZscz2HQyjNUFR8yCs8luoAV1Arawqj1g/viewform",
+      answerLink: null,
+      standings: null,
+    },
+    {
+      id: "01 + 02",
+      examId: "zoo_1FAIpQLScIQjkUz0zWESCKSjcPqoitru7NTLtgjcTbWOHdXFgH-WNXg",
+      subId: "zoo",
+      courseName: "Medical Standard",
+      subject: "Biology 2nd Paper",
+      exam: "daily",
+      type: "MCQ",
+      marks: 50,
+      syllabus: "Chapter 4",
+      time: "25 mins",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLScIQjkUz0zWESCKSjcPqoi_tru7NTLtgjcTbWOHdXFgH-WNXg/viewform",
+      answerLink: null,
+      standings: null,
+    },
+  ],
+
+  //
+  //
+  //
+  //
+  //
+  // // // // // // // // // //......................  HSC  .................// // // // // // // // //
+  //
+  //
+  //
+  //
+  //
+
   hsc: {
     full: {
       course: "Full Preparation",
+      //
+      // HSC FULL PHX 1
+      //
       phx1: [],
+      //
+      // HSC FULL PHX 2
+      //
       phx2: [],
+      //
+      // HSC FULL CHEM 1
+      //
       chem1: [],
+      //
+      // HSC FULL CHEM 2
+      //
       chem2: [],
-      hm2: [],
+      //
+      // HSC FULL HM 2
+      //
+      hm2: [
+        {
+          id: "01",
+          subject: "Higher Math 1st Paper",
+          exam: "random",
+          type: "MCQ",
+          marks: 50,
+          syllabus: "Full Book",
+          time: "30 mins",
+          link: "https://docs.google.com/forms/d/e/1FAIpQLSdP3hsJw3n_FSgqbt9ZN4vz7bsoMB5UFw3eSsZ4yka5H03GPQ/viewform",
+          answerLink: null,
+          standings: null,
+        },
+      ],
+      //
+      // HSC FULL HM 1
+      //
       hm1: [
         {
           id: "01",
@@ -43,7 +116,13 @@ const data = {
           ],
         },
       ],
+      //
+      // HSC FULL BIO 2
+      //
       zoo: [],
+      //
+      // HSC FULL BIO 1
+      //
       bot: [],
       coursePath: "full",
     },
@@ -61,9 +140,24 @@ const data = {
     },
   },
 
+  //
+  //
+  //
+  //
+  //
+  // // // // // // // // // //......................  ADMISSION  ...................// // // // // // // // //
+  //
+  //
+  //
+  //
+  //
+
   admission: {
     EngineeringStandard: {
       course: "Engineering Full Course",
+      //
+      // ENG PHX 1
+      //
       phx1: [
         {
           id: "01",
@@ -97,10 +191,25 @@ const data = {
           standings: null,
         },
       ],
+      //
+      // ENG PHX 2
+      //
       phx2: [],
+      //
+      // ENG CHEM 1
+      //
       chem1: [],
+      //
+      // ENG CHEM 2
+      //
       chem2: [],
+      //
+      // ENG HM 2
+      //
       hm2: [],
+      //
+      // ENG HM 1
+      //
       hm1: [
         {
           id: "01",
@@ -125,10 +234,25 @@ const data = {
       coursePath: "EngineeringStandard",
     },
 
+    //
+    //
+    // // // // // //.............. MED STANDARD ..............// // // // //
+    //
+    //
+
     MedicalStandard: {
       course: "Medical Crash Revision",
+      //
+      // MED PHX 1
+      //
       phx1: [],
+      //
+      // MED PHX 2
+      //
       phx2: [],
+      //
+      // MED CHEM 1
+      //
       chem1: [
         {
           id: "01",
@@ -150,7 +274,13 @@ const data = {
           ],
         },
       ],
+      //
+      // MED CHEM 2
+      //
       chem2: [],
+      //
+      // MED BIO 2
+      //
       zoo: [
         {
           id: "01 + 02",
@@ -165,6 +295,9 @@ const data = {
           standings: null,
         },
       ],
+      //
+      // MED BIO 1
+      //
       bot: [],
       coursePath: "MedicalStandard",
     },
@@ -178,29 +311,41 @@ const data = {
       zoo: [],
       bot: [],
       hm2: [],
-      hm1: [
-        {
-          id: "01",
-          subject: "Higher Math 1st Paper",
-          exam: "random",
-          type: "MCQ",
-          marks: 50,
-          syllabus: "Full Book",
-          time: "30 mins",
-          link: "https://docs.google.com/forms/d/e/1FAIpQLSdP3hsJw3n_FSgqbt9ZN4vz7bsoMB5UFw3eSsZ4yka5H03GPQ/viewform",
-          answerLink: null,
-          standings: null,
-        },
-      ],
+      hm1: [],
       coursePath: "VarsityStandard",
     },
+
+    //
+    //
+    // // // // // //.............. DU SPECIAL ..............// // // // //
+    //
+    //
+
     DUSpecial: {
-      course: "DU Special",
+      course: "DU A-Unit Special",
+      //
+      // DU PHX 1
+      //
       phx1: [],
+      //
+      // DU PHX 2
+      //
       phx2: [],
+      //
+      // DU CHEM 1
+      //
       chem1: [],
+      //
+      // DU CHEM 2
+      //
       chem2: [],
+      //
+      // DU HM 2
+      //
       hm2: [],
+      //
+      // DU HM 1
+      //
       hm1: [
         {
           id: "01",
@@ -222,10 +367,13 @@ const data = {
           ],
         },
       ],
+      //
+      // DU BIO 2
+      //
       zoo: [
         {
           id: "01",
-          subject: "Zoology",
+          subject: "Biology 2nd Paper",
           exam: "random",
           type: "MCQ",
           marks: 25,
@@ -243,10 +391,25 @@ const data = {
           ],
         },
       ],
+      //
+      // DU BIO 1
+      //
       bot: [],
       coursePath: "DUSpecial",
     },
   },
+
+  //
+  //
+  //
+  //
+  //
+  // // // // // // // // // //...................... BLOG .................// // // // // // // // //
+  //
+  //
+  //
+  //
+  //
 
   blog: [
     {
@@ -305,6 +468,19 @@ const data = {
       fbProfile: "https://www.facebook.com/theSajin",
     },
   ],
+
+  //
+  //
+  //
+  //
+  //
+  // // // // // // // // // //......................  TEAMs  .................// // // // // // // // //
+  //
+  //
+  //
+  //
+  //
+
   team: {
     coreMembers: [
       {

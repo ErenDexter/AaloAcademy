@@ -1,5 +1,6 @@
 <script>
     export let examInfo;
+    const divH = window.innerHeight - 240;
 </script>
 
 {#if examInfo.standings === null} 
@@ -12,7 +13,7 @@
     <div class="flex flex-col justify-center">
         <section class="text-gray-600 body-font">
             <div class="container px-5 py-5 mx-auto">
-              <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+              <div class="lg:w-2/3 w-full mx-auto overflow-auto" style="height: {divH}px;">
                 <table class="table-auto w-full text-center whitespace-no-wrap">
                   <thead>
                     <tr>

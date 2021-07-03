@@ -50,7 +50,6 @@ function returnId(link) {
 newIcon = state === "phx1" ? icon[0] : (state === "phx2" ? icon[1] : (state === 'hm1' ? icon[2] : (state === 'hm2' ? icon[3] : (state === "chem1" ? icon[4] : icon[5]))));
 
 const examInfo = data.hsc[window.location.pathname.split('/')[3]][examId.split("_")[0]].filter(xm => returnId(xm.link) === examId.split("_")[1])[0];
-
 </script>
 
 <div>
@@ -65,30 +64,36 @@ const examInfo = data.hsc[window.location.pathname.split('/')[3]][examId.split("
         <section class="text-gray-600 body-font w-auto lg:ml-24">
             <div  class="border border-gray-200 p-6 pr-20 pl-7 rounded-lg shadow-md relative">
                 <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 text-red-500 mb-4">
+                    {#if state === 'phx1' || state === 'phx2' || state === 'chem1' || state === 'chem2' || state === 'hm1' || state === 'hm2'}
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
                         <path d={newIcon}></path>
                     </svg>
-                </div>
-                {#if localStorage.getItem(`${examId}-taken`)}
-                <div class="absolute top-8 right-5 text-base text-primary">Taken ✓</div>
-                {/if}
-                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">{examInfo.subject} - {examInfo.id}</h2>
-                <p class="leading-relaxed text-base">Syllabus: {examInfo.syllabus}<br> Full Marks: {examInfo.marks} <br> Time: {examInfo.time}</p>
-            </div>
-        </section>
-        <div on:click={() => page='exam'} class="lg:ml-20  lg:mt-0 mt-16"><Button string="Take Exam" /></div>
-        <div on:click={() => page='leaderboard'} class="lg:ml-16  lg:mt-0 mt-4"><Button string="Leaderboard" /></div>
-        <div on:click={() => page='answer'} class="lg:ml-16  lg:mt-0 mt-4"><Button string="Show Answer" /></div>
-       
-    </div>
+                    {:else if state === 'bot'}
+                    <svg class="h-6 w-6 text-primary"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="4" y="3" width="8" height="14" rx="4" />  <rect x="12" y="7" width="8" height="10" rx="3" />  <line x1="8" y1="21" x2="8" y2="13" />  <line x1="16" y1="21" x2="16" y2="14" /></svg>
+                        {:else}
+                        <svg class="h-6 w-6 text-primary"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M18.9 7a8 8 0 0 1 1.1 5v1a6 6 0 0 0 .8 3" />  <path d="M8 11a4 4 0 0 1 8 0v1a10 10 0 0 0 2 6" />  <path d="M12 11v2a14 14 0 0 0 2.5 8" />  <path d="M8 15a18 18 0 0 0 1.8 6" />  <path d="M4.9 19a22 22 0 0 1 -.9 -7v-1a8 8 0 0 1 12 -6.95" /></svg>
+                            {/if}
+                            </div>
+                            {#if localStorage.getItem(`${examId}-taken`)}
+                            <div class="absolute top-8 right-5 text-base text-primary">Taken ✓</div>
+                            {/if}
+                            <h2 class="text-lg text-gray-900 font-medium title-font mb-2">{examInfo.subject} - {examInfo.id}</h2>
+                            <p class="leading-relaxed text-base">Syllabus: {examInfo.syllabus}<br> Full Marks: {examInfo.marks} <br> Time: {examInfo.time}</p>
+                            </div>
+                            </section>
+                            <div on:click={() => page='exam'} class="lg:ml-20  lg:mt-0 mt-16"><Button string="Take Exam" /></div>
+                            <div on:click={() => page='leaderboard'} class="lg:ml-16  lg:mt-0 mt-4"><Button string="Leaderboard" /></div>
+                            <div on:click={() => page='answer'} class="lg:ml-16  lg:mt-0 mt-4"><Button string="Show Answer" /></div>
 
-    <div class="lg:ml-96 lg:-mt-28 lg:pl-32 xl:mr-96 lg:mr-48  rounded-lg bg-gray-100 lg:bg-white m-5 text-base p-5 -mt-16 pb-5  text-justify text-gray-900"><span class="text-primary " style="font-weight: 600;">NOTE: </span>You will get extra <span style="font-weight: 600;">60 seconds</span> for filling up your name, email and other stuffs. And also you have to hit the submit button yourself before the time runs out. Remember, <span style="font-weight: 600;">if the time runs out your answers won't get submitted automatically.</span></div>
-    
-    {:else if page==='exam'}
-    <Exam link={examInfo.link} time={examInfo.time} examId={examId}/>
-        {:else if page==='answer'}
-        <Answer examInfo={examInfo}/>
-        {:else}
-        <Leaderboard examInfo={examInfo}/>
-        {/if}
-        </div>
+                            </div>
+
+                            <div class="lg:ml-96 lg:-mt-28 lg:pl-32 xl:mr-96 lg:mr-48  rounded-lg bg-gray-100 lg:bg-white m-5 text-base p-5 -mt-16 pb-5  text-justify text-gray-900"><span class="text-primary " style="font-weight: 600;">NOTE: </span>You will get extra <span style="font-weight: 600;">60 seconds</span> for filling up your name, email and other stuffs. And also you have to hit the submit button yourself before the time runs out. Remember, <span style="font-weight: 600;">if the time runs out your answers won't get submitted automatically.</span></div>
+
+                            {:else if page==='exam'}
+                            <Exam link={examInfo.link} time={examInfo.time} examId={examId}/>
+                                {:else if page==='answer'}
+                                <Answer examInfo={examInfo}/>
+                                    {:else}
+                                    <Leaderboard examInfo={examInfo}/>
+                                        {/if}
+                                        </div>

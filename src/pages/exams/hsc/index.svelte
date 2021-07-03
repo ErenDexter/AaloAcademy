@@ -4,10 +4,12 @@
     } from "@roxi/routify"
     
     let courses = ['full', 'revision'];
+    const divH = window.innerHeight - 135
     </script>
     
     <div>
-        <div class="overflow-y-scroll  h-100 ">
+        <div class="overflow-y-auto" style="height: {divH}px;">
+            <br>
             <section class="text-gray-600 body-font  md:mx-20">
                 <div class="container px-5 py-5 mx-auto">
                     <div class="flex flex-wrap -m-4">
@@ -42,7 +44,7 @@
                     </div>
                 </div>
             </section>
-            <br><br><br>
+            <br>
         </div>
     </div>
     

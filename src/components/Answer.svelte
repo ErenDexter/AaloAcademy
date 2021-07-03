@@ -1,5 +1,6 @@
 <script>
 export let examInfo;
+const divH = window.innerHeight - 190;
 </script>
 
 {#if examInfo.answerLink === null}
@@ -18,7 +19,7 @@ export let examInfo;
             type="text/html"
             data={examInfo.answerLink}
             width="100%"
-            height="550px"
+            height="{divH}px"
             style="overflow: auto"
             />
 

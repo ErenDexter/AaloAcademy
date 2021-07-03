@@ -1,33 +1,27 @@
 <script>
 import {
     onDestroy
-} from "svelte"
-
+} from "svelte";
 import store from "../../../database/store"
 import {
-    Button,
-    Exam,
-    Answer,
-    Leaderboard,
-    DisabledBtn
-} from "../../../components"
-
-let page = 'index';
+    goto
+} from "@roxi/routify"
 
 let data = {};
 const unsub = store.subscribe(db => {
     data = db;
 })
 
-let examId = data.daily.examId;
-
-let state = data.daily.subId;
-
 onDestroy(() => {
     unsub();
 })
 
-let newIcon, icon = ["M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z",
+const divH = window.innerHeight - 205;
+
+let exams;
+exams = data.daily;
+
+let icon = ["M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z",
 
     "M22 12h-4l-3 9L9 3l-3 9H2",
 
@@ -41,53 +35,43 @@ let newIcon, icon = ["M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h
 
 ]
 
-newIcon = state === "phx1" ? icon[0] : (state === "phx2" ? icon[1] : (state === 'hm1' ? icon[2] : (state === 'hm2' ? icon[3] : (state === "chem1" ? icon[4] : icon[5]))));
-
-const examInfo = data.daily;
+function returnId(link) {
+    var linkArr = link.split("/");
+    linkArr.pop();
+    var filtered = linkArr[6].split('').filter(char => char !== '_');
+    console.log(filtered.join(""))
+    return filtered.join("");
+}
 </script>
+<div class="flex justify-center text-2xl font-light px-5 mt-5">Aalo Academy - Daily Exam</div>
+<div style="height: {divH}px;" class="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-strech md:mr-14 md:ml-10 xl:ml-0 mt-5 gap-4 h-100 p-4 lg:pl-10 xl:pl-20 pr-4 overflow-y-auto">
 
-<div>
-    {#if page==='index' && examInfo}
-    <div class="flex items-center lg:ml-20 lg:pl-1.5 lg:mt-14 mt-5 px-6">
-        <div class="bg-primary w-2.5 h-2.5 -ml-1 mr-3"></div>
-        <div class="title-font  sm:text-xl text-lg font-medium text-gray-900">Aalo Academy - Daily Exam</div>
-    </div>
+    {#if exams.length > 0}
+    {#each exams as exam}
+    <section class="text-gray-600 body-font">
+        <div on:click={$goto(`${window.location.pathname}/${exam.subId}_${returnId(exam.link)}`)} class= "w-full border relative border-gray-200 p-6 pl-7 rounded-lg transition duration-300 transform hover:scale-105 ease-in-out cursor-pointer shadow-md">
+            <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 text-primary mb-4">
+                {#if exam.subId === 'phx1' || exam.subId === 'phx2' || exam.subId === 'chem1' || exam.subId === 'chem2' || exam.subId === 'hm1' || exam.subId === 'hm2'}
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                    <path d={exam.subId === "phx1" ? icon[0] : (exam.subId === "phx2" ? icon[1] : (exam.subId === 'hm1' ? icon[2] : (exam.subId === 'hm2' ? icon[3] : (exam.subId === "chem1" ? icon[4] : icon[5]))))}></path>
+                </svg>
+                {:else if exam.subId === 'bot'}
+                <svg class="h-6 w-6 text-primary"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="4" y="3" width="8" height="14" rx="4" />  <rect x="12" y="7" width="8" height="10" rx="3" />  <line x1="8" y1="21" x2="8" y2="13" />  <line x1="16" y1="21" x2="16" y2="14" /></svg>
+                    {:else}
+                    <svg class="h-6 w-6 text-primary"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M18.9 7a8 8 0 0 1 1.1 5v1a6 6 0 0 0 .8 3" />  <path d="M8 11a4 4 0 0 1 8 0v1a10 10 0 0 0 2 6" />  <path d="M12 11v2a14 14 0 0 0 2.5 8" />  <path d="M8 15a18 18 0 0 0 1.8 6" />  <path d="M4.9 19a22 22 0 0 1 -.9 -7v-1a8 8 0 0 1 12 -6.95" /></svg>
+                        {/if}
 
-    <div class="flex flex-col lg:flex-row lg:items-baseline overflow-y-scroll lg:overflow-y-hidden items-center lg:px-10 px-4 mt-10 lg:-ml-8  w-auto h-100 lg:h-auto">
-
-        <section class="text-gray-600 body-font w-auto lg:ml-24">
-            <div  class="border border-gray-200 p-6 pr-20 pl-7 relative rounded-lg shadow-md">
-                <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-red-100 text-red-500 mb-4">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
-                        <path d={newIcon}></path>
-                    </svg>
-                </div>
-                {#if localStorage.getItem(`${examId}-taken`)}
-                <div class="absolute top-8 right-5 text-base text-primary">Taken ✓</div>
-                {/if}
-                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">{examInfo.subject} - {examInfo.id}</h2>
-                <p class="leading-relaxed text-base">Syllabus: {examInfo.syllabus}<br> Full Marks: {examInfo.marks} <br> Time: {examInfo.time}</p>
-            </div>
-        </section>
-        {#if localStorage.getItem(`${examId}-taken`)}
-        <div class="lg:ml-20  lg:mt-0 mt-16 cursor-not-allowed"><DisabledBtn string="Take Exam" /></div>
-        {:else}
-        <div on:click={() => page='exam'} class="lg:ml-20 lg:mt-0 mt-16"><Button string="Take Exam" /></div>
-        {/if}
-        <div on:click={() => page='leaderboard'} class="lg:ml-16 lg:mt-0 mt-4"><Button string="Leaderboard" /></div>
-        <div on:click={() => page='answer'} class="lg:ml-16 lg:mt-0 mt-4"><Button string="Show Answer" /></div>
-
-    </div>
-    {#if localStorage.getItem(`${examId}-taken`)}
-
-    <div class="lg:ml-96 lg:-mt-28 lg:pl-32 xl:mr-96 lg:mr-48  rounded-lg bg-gray-100 lg:bg-white m-5 text-base p-5 -mt-16 pb-5  text-justify text-gray-900"><span class="text-primary " style="font-weight: 600;">NOTE: </span>This exam will be available in the <span style="font-weight: 600;">HSC/Admission Preparation</span> section after 24 hours. Then you can take this exam as many times as you want.</div>
-
-    {/if}
-    {:else if page==='exam'}
-    <Exam link={examInfo.link} time={examInfo.time} examId={examId}/>
-        {:else if page==='answer'}
-        <Answer examInfo={examInfo}/>
-            {:else}
-            <Leaderboard examInfo={examInfo}/>
-                {/if}
-                </div>
+                        </div>
+                        {#if localStorage.getItem(`${exam.subId}_${returnId(exam.link)}-taken`)}
+                        <div class="absolute  top-8 right-5 text-base text-primary">Taken ✓</div>
+                        {/if}
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-2">{exam.courseName}<br>{exam.subject} - {exam.id}</h2>
+                        <p class="leading-relaxed text-base">Syllabus: {exam.syllabus}<br> Full Marks: {exam.marks} <br> Time: {exam.time}</p>
+                        </div>
+                        </section>
+                        {/each}
+                        {:else}
+                        <center class="text-2xl">Coming Soon...</center>
+                        {/if}
+                        <br>
+                        </div>
