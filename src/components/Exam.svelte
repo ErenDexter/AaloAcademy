@@ -10,6 +10,8 @@ import
 Button
 from "./Button.svelte"
 
+import Quiz from "./Quiz.svelte"
+
 export let examId;
 
 const divH = window.innerHeight - 190;
@@ -95,14 +97,9 @@ onMount(() => {
     {/if}
     <div class="flex justify-center">
         {#if showExamDiv}
-        <object
-            title=""
-            type="text/html"
-            data={link}
-            width="100%"
-            height="{divH}px"
-            style="overflow: auto"
-            />
+        <div class="lg:w-3/4 w-full px-4" style="max-width: 1240px; height:{divH}">
+            <Quiz />
+        </div>
             {:else} <div class="mt-20 text-3xl font-light text-primary">Opps... Time's Up!</div>
             {/if}
             </div>
